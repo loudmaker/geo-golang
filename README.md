@@ -30,6 +30,7 @@ This product is designed to open to any Geocoding service. Based on it,
 + [TomTom](https://www.tomtom.com)
 + [Yandex.Maps](https://tech.yandex.com/maps/doc/geocoder/desc/concepts/About-docpage/)
 + [French API Gouv](https://adresse.data.gouv.fr/api)
++ [Baidu Map](https://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding)
 
 clients are implemented in ~50 LoC each.
 
@@ -44,6 +45,7 @@ import (
 
 	"github.com/codingsince1985/geo-golang"
 	"github.com/codingsince1985/geo-golang/arcgis"
+	"github.com/codingsince1985/geo-golang/baidu"
 	"github.com/codingsince1985/geo-golang/bing"
 	"github.com/codingsince1985/geo-golang/chained"
 	"github.com/codingsince1985/geo-golang/frenchapigouv"
@@ -94,6 +96,9 @@ func ExampleGeocoder() {
 
 	fmt.Println("Bing Geocoding API")
 	try(bing.Geocoder(os.Getenv("BING_API_KEY")))
+
+	fmt.Println("Baidu Geocoding API")
+	try(google.Geocoder(os.Getenv("BAIDU_API_KEY")))
 
 	fmt.Println("Mapbox API")
 	try(mapbox.Geocoder(os.Getenv("MAPBOX_API_KEY")))
@@ -201,6 +206,11 @@ Bing Geocoding API
 Melbourne VIC location is (-37.824299, 144.977997)
 Address of (-37.813611,144.963056) is Elizabeth St, Melbourne, VIC 3000
 Detailed address: &geo.Address{FormattedAddress:"Elizabeth St, Melbourne, VIC 3000", Street:"Elizabeth St", HouseNumber:"", Suburb:"", Postcode:"3000", State:"", StateDistrict:"", County:"", Country:"Australia", CountryCode:"", City:"Melbourne"}
+
+Baidu Geocoding API
+Melbourne VIC location is (31.227015, 121.456967)
+Address of (-37.813611,144.963056) is 341 Little Bourke Street, Melbourne, Victoria, Australia
+Detailed address: &geo.Address{FormattedAddress:"341 Little Bourke Street, Melbourne, Victoria, Australia", Street:"Little Bourke Street", HouseNumber:"341", Suburb:"", Postcode:"", State:"Victoria", StateCode:"", StateDistrict:"", County:"", Country:"Australia", CountryCode:"AUS", City:"Melbourne"}
 
 Mapbox API
 Melbourne VIC location is (-37.814200, 144.963200)
